@@ -1,5 +1,7 @@
 #include QMK_KEYBOARD_H
 
+// THIS FILE IS ONLY BEING USED AS A REFERENCE
+
 /*
   mahadia-rev-h formated & with named layers
   this file doesnt seem to work when converting to json,
