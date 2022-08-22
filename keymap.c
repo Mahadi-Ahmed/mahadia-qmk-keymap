@@ -1,7 +1,6 @@
 /*
- * mahadia rev h
+ * version: 1.0.1
  * TODO:
- *   Add updir macro -> ../
  *   Implement some way for swedish chars
  */
 
