@@ -14,6 +14,8 @@
 #include "keymap_swedish_pro_mac_ansi.h" // works well with OSX
 #include "sendstring_swedish.h"
 
+#include "features/custom_shift_keys.h"
+
 enum planck_layers { _QWERTY, _SYMBOLS, _NUMPAD, _MOVEMENT, _FNLAYER, _GUITABS, _SWERTY};
 enum planck_keycodes { QWERTY = SAFE_RANGE };
 
@@ -95,7 +97,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 };
 
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    if (!process_custom_shift_keys(keycode, record)) {  return false; }
     switch (keycode) {
         case UPDIR:
             if (record->event.pressed) {
@@ -105,3 +109,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
     return true;
 }
+
+const custom_shift_key_t custom_shift_keys[] = {
+    {SE_QUOT, SE_DQUO},
+};
+
+uint8_t NUM_CUSTOM_SHIFT_KEYS =
+    sizeof(custom_shift_keys) / sizeof(custom_shift_key_t);
+
