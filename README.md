@@ -8,7 +8,7 @@ ToDo:
   - [x] Refactor keymap to use Swedish Language specific keymaps:
 - [] implement [home row mods]()
 - [] home & end working on osx
-- [] implement [caps word](https://github.com/qmk/qmk_firmware/blob/master/users/drashna/keyrecords/capwords.md)
+- [x] implement [caps word](https://github.com/qmk/qmk_firmware/blob/master/users/drashna/keyrecords/capwords.md)
 
 
 ## QMK commands

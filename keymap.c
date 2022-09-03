@@ -1,9 +1,9 @@
 /*
  * version: 1.0.1
  * TODO:
- *   Implement some way for swedish chars
- * - Use swedish dot / colon instead of US
- * - Implement custom shift keys for ' & s + ' = "
+ * - Implement Caps word
+ * - Implement å ä ö 
+ *   Look into implementing it with "When another key is held on Pascal getreuer's post about triggers"
  */
 
 #include "quantum.h"
@@ -45,7 +45,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TAB, SE_Q, SE_W, SE_E, SE_R, SE_T, SE_Y, SE_U, SE_I, SE_O, SE_P, KC_BSPC,
         MOVEMENT, SE_A, SE_S, SE_D, SE_F, SE_G, SE_H, SE_J, SE_K, SE_L, SE_DOT, SE_QUOT,
         KC_LSFT, SE_Z, KC_X, SE_C, SE_V, SE_B, SE_N, SE_M, KC_COMM, KC_DOT, SE_X, KC_SFTENT,
-        FNLAYER, KC_LCTL, KC_LALT, KC_LGUI, NUMPAD, KC_SPC, GUITABS, SYMBOLS, KC_RCTL, KC_RALT, KC_RGUI, KC_SLSH
+        FNLAYER, KC_LCTL, KC_LALT, KC_LGUI, NUMPAD, KC_SPC, GUITABS, SYMBOLS, KC_RCTL, KC_RALT, KC_RGUI, CAPSWRD
     ),
 
      /* Symbols
@@ -88,7 +88,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_NO, KC_NO, KC_NO, KC_NO, KC_TRNS, KC_NO, KC_NO, KC_TRNS, KC_NO, KC_NO, KC_NO, KC_1
     ),
 
-     
     [_GUITABS] = LAYOUT_ortho_4x12(
         KC_NO, LGUI(KC_P1), LGUI(KC_P2), LGUI(KC_P3), LGUI(KC_P4), KC_NO, KC_NO, KC_NO, KC_NO, LGUI(LSFT(KC_3)), LGUI(LSFT(KC_4)), KC_NO,
         KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, AG_SWAP, AG_NORM, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
@@ -96,7 +95,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO
     ),
 };
-
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (!process_custom_shift_keys(keycode, record)) {  return false; }
