@@ -4,7 +4,7 @@ Keymap for a planck 48 key layout
 
 ---
 ToDo:
-- [] Some way to use swedish Ö Ä Å
+- [x] Some way to use swedish Ö Ä Å
   - [x] Refactor keymap to use Swedish Language specific keymaps:
 - [] implement [home row mods]()
 - [] home & end working on osx
@@ -20,6 +20,10 @@ qmk c2json -km mahadia -kb planck/rev6_drop keymap.c --no-cpp -o mahadia.json
 ### Notes
 Currently using keymap_swedish_pro_mac_ansi.h , works well with OSX but not with W10
 Look into which QMK swedish keymap header works well with [Swerty](https://johanegustafsson.net/projects/swerty/)
+
+---
+#### Edit the file qmk/quantum/keymap_extras/sendstring_swedish.h
+include the same swedish version of keymap you're using in keymap.c
 
 ## Resources & Inspirations:
 
