@@ -48,7 +48,9 @@
 // Most tactile encoders have detents every 4 stages
 #define ENCODER_RESOLUTION 4
 
-#define TAPPING_TERM 300 // works quite well, could try values between 200 < x < 300
+#define COMBO_COUNT 3
+
+#define TAPPING_TERM 250 // 300 works quite well, could try values between 200 < x < 300
 
 // Activate caps word with double tap shift
 #define DOUBLE_TAP_SHIFT_TURNS_ON_CAPS_WORD

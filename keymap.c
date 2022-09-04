@@ -1,7 +1,5 @@
 /*
- * version: 1.0.1
  * TODO:
- * - Implement Caps word
  * - Implement å ä ö 
  *   Look into implementing it with "When another key is held on Pascal getreuer's post about triggers"
  */
@@ -76,7 +74,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_MOVEMENT] = LAYOUT_ortho_4x12(
         KC_TRNS, KC_BTN2, KC_MS_U, KC_BTN1, KC_NO, KC_NO, KC_NO, KC_WH_D, KC_WH_U, KC_NO, KC_NO, KC_NO,
-        KC_NO, KC_MS_L, KC_MS_D, KC_MS_R, KC_NO, KC_HOME, KC_LEFT, KC_DOWN, KC_UP, KC_RGHT, KC_END, KC_NO,
+        KC_NO, KC_MS_L, KC_MS_D, KC_MS_R, KC_NO, KC_NO, KC_LEFT, KC_DOWN, KC_UP, KC_RGHT, KC_NO, KC_NO,
         KC_TRNS, KC_UNDO, KC_CUT, KC_COPY, KC_PSTE, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_TRNS,
         KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_ACL0, KC_ACL1, KC_ACL2
     ),
@@ -137,3 +135,11 @@ bool caps_word_press_user(uint16_t keycode) {
   }
 };
 
+const uint16_t PROGMEM se_1[] = { KC_V, SE_DOT, COMBO_END };
+const uint16_t PROGMEM se_2[] = { KC_V, SE_QUOT, COMBO_END };
+const uint16_t PROGMEM se_3[] = { KC_V, KC_BSPC, COMBO_END };
+combo_t key_combos[COMBO_COUNT] = {
+  COMBO(se_1, SE_ODIA),
+  COMBO(se_2, SE_ADIA),
+  COMBO(se_3, SE_ARNG),
+};
