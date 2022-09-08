@@ -1,9 +1,10 @@
 /*
  * TODO:
+ *  - Find some macro/keybind, some way to press cmd + alt + c easily
  *  - Try using symbol layer with toggle instead, where space returns to QWERTY layer
- *  - Implement in gui layer a way to move navigate osx desktop's
- *  - Implement macros for:
- *     =>
+ *  - Implement macros for: =>
+ *  - Use swerty software & refactor code to use US keycodes with some swedish chars
+ *     
  */
 
 #include "keycode.h"
@@ -94,8 +95,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_GUITABS] = LAYOUT_ortho_4x12(
         KC_NO, LGUI(KC_P1), LGUI(KC_P2), LGUI(KC_P3), LGUI(KC_P4), KC_NO, KC_NO, KC_NO, KC_NO, LGUI(LSFT(KC_3)), LGUI(LSFT(KC_4)), KC_NO,
-        KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, AG_SWAP, AG_NORM, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
-        KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
+        LCTL(KC_1), LCTL(KC_2), LCTL(KC_3), LCTL(KC_4), LCTL(KC_5), LCTL(KC_6), LCTL(KC_LEFT), LCTL(KC_DOWN), LCTL(KC_UP), LCTL(KC_RIGHT), KC_NO, KC_NO,
+        LCTL(KC_7), LCTL(KC_8), LCTL(KC_9), KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
         KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO
     ),
 };
