@@ -1,9 +1,12 @@
 /*
  * TODO:
- * - Implement å ä ö 
- *   Look into implementing it with "When another key is held on Pascal getreuer's post about triggers"
+ *  - Try using symbol layer with toggle instead, where space returns to QWERTY layer
+ *  - Implement in gui layer a way to move navigate osx desktop's
+ *  - Implement macros for:
+ *     =>
  */
 
+#include "keycode.h"
 #include "quantum.h"
 #include "quantum_keycodes.h"
 #include QMK_KEYBOARD_H
@@ -23,7 +26,10 @@ enum planck_keycodes { QWERTY = SAFE_RANGE };
 #define FNLAYER MO(_FNLAYER)
 #define GUITABS LT(_GUITABS, KC_SPC)
 
-enum custom_keycodes { UPDIR = SAFE_RANGE };
+enum custom_keycodes {
+  UPDIR = SAFE_RANGE,
+  CSLOG
+};
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -42,8 +48,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_QWERTY] = LAYOUT_ortho_4x12(
         KC_TAB, SE_Q, SE_W, SE_E, SE_R, SE_T, SE_Y, SE_U, SE_I, SE_O, SE_P, KC_BSPC,
         MOVEMENT, SE_A, SE_S, SE_D, SE_F, SE_G, SE_H, SE_J, SE_K, SE_L, SE_DOT, SE_QUOT,
-        KC_LSFT, SE_Z, KC_X, SE_C, SE_V, SE_B, SE_N, SE_M, KC_COMM, KC_DOT, SE_X, KC_SFTENT,
-        FNLAYER, KC_LCTL, KC_LALT, KC_LGUI, NUMPAD, KC_SPC, GUITABS, SYMBOLS, KC_RCTL, KC_RALT, KC_RGUI, SE_UNDS
+        KC_LSFT, SE_Z, KC_X, SE_C, SE_V, SE_B, SE_N, SE_M, KC_COMM, KC_SLASH, SE_X, KC_SFTENT,
+        FNLAYER, KC_LCTL, KC_LALT, KC_LGUI, NUMPAD, KC_SPC, GUITABS, SYMBOLS, KC_RCTL, KC_RALT, KC_RGUI, SE_SLSH
     ),
 
      /* Symbols
@@ -61,7 +67,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      [_SYMBOLS] = LAYOUT_ortho_4x12(
         SE_GRV, SE_AT, SE_LABK, SE_RABK, SE_AMPR, SE_HASH, SE_PIPE, SE_LPRN, SE_RPRN, SE_EXLM, SE_QUES, SE_CIRC,
         KC_NO, SE_DOT, SE_MINS, SE_PLUS, SE_EQL, SE_SLSH, SE_DLR, SE_LCBR, SE_RCBR, SE_PERC, SE_TILD, SE_ASTR,
-        KC_NO, KC_NO, KC_NO, KC_NO, SE_BSLS, UPDIR, SE_UNDS, SE_LBRC, SE_RBRC, KC_NO, KC_NO, KC_NO,
+        KC_LSFT, KC_NO, KC_NO, CSLOG, SE_BSLS, UPDIR, SE_UNDS, SE_LBRC, SE_RBRC, KC_NO, KC_NO, KC_NO,
         KC_NO, KC_NO, KC_NO, KC_NO, KC_TRNS, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO
      ),
 
@@ -80,7 +86,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     [_NUMPAD] = LAYOUT_ortho_4x12(
-        KC_0, KC_1, KC_2, KC_3, KC_4, KC_5, KC_NO, SE_4, SE_5, SE_6, KC_NO, KC_NO,
+        KC_0, KC_1, KC_2, KC_3, KC_4, KC_5, KC_NO, SE_4, SE_5, SE_6, KC_NO, KC_BSPC,
         KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, SE_0, SE_1, SE_2, SE_3, KC_NO, KC_PAST,
         KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, SE_7, SE_8, SE_9, KC_NO, KC_NO,
         KC_NO, KC_NO, KC_NO, KC_NO, KC_TRNS, KC_NO, KC_NO, KC_TRNS, KC_NO, KC_NO, KC_NO, KC_1
@@ -100,6 +106,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case UPDIR:
             if (record->event.pressed) {
                 SEND_STRING("../");
+            }
+            return false;
+        case CSLOG:
+            if (record->event.pressed) {
+                SEND_STRING("console.log()");
             }
             return false;
     }
