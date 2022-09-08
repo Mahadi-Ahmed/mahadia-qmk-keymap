@@ -110,8 +110,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             return false;
         case CSLOG:
             if (record->event.pressed) {
-                SEND_STRING("console.log()");
-            }
+                SEND_STRING("console.log()"SS_TAP(X_LEFT));
+            } 
             return false;
     }
     return true;
