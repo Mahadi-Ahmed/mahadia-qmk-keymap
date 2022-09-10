@@ -3,8 +3,7 @@
  *  - Find some macro/keybind, some way to press cmd + alt + c easily
  *  - Try using symbol layer with toggle instead, where space returns to QWERTY layer
  *  - Implement macros for: =>
- *  - Use swerty software & refactor code to use US keycodes with some swedish chars
- *     
+ *  - Setup macros to press LCTL(10) for more ways to access osx desktops
  */
 
 #include "keycode.h"
@@ -14,7 +13,7 @@
 #include "muse.h"
 
 #include "keymap_swedish_pro_mac_ansi.h" // works well with OSX
-#include "sendstring_swedish.h"
+// #include "sendstring_swedish.h"
 
 #include "features/custom_shift_keys.h"
 
@@ -47,10 +46,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      */
 
     [_QWERTY] = LAYOUT_ortho_4x12(
-        KC_TAB, SE_Q, SE_W, SE_E, SE_R, SE_T, SE_Y, SE_U, SE_I, SE_O, SE_P, KC_BSPC,
-        MOVEMENT, SE_A, SE_S, SE_D, SE_F, SE_G, SE_H, SE_J, SE_K, SE_L, SE_DOT, SE_QUOT,
-        KC_LSFT, SE_Z, KC_X, SE_C, SE_V, SE_B, SE_N, SE_M, KC_COMM, KC_SLASH, SE_X, KC_SFTENT,
-        FNLAYER, KC_LCTL, KC_LALT, KC_LGUI, NUMPAD, KC_SPC, GUITABS, SYMBOLS, KC_RCTL, KC_RALT, KC_RGUI, SE_SLSH
+        KC_TAB, KC_Q, KC_W, KC_E, KC_R, KC_T, KC_Y, KC_U, KC_I, KC_O, KC_P, KC_BSPC,
+        MOVEMENT, KC_A, KC_S, KC_D, KC_F, KC_G, KC_H, KC_J, KC_K, KC_L, KC_DOT, LALT(KC_QUOT),
+        KC_LSFT, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_N, KC_M, KC_COMM, KC_SLASH, KC_X, KC_SFTENT,
+        FNLAYER, KC_LCTL, KC_LALT, KC_LGUI, NUMPAD, KC_SPC, GUITABS, SYMBOLS, KC_RCTL, KC_RALT, KC_RGUI, KC_SLSH
     ),
 
      /* Symbols
@@ -66,9 +65,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       */
 
      [_SYMBOLS] = LAYOUT_ortho_4x12(
-        SE_GRV, SE_AT, SE_LABK, SE_RABK, SE_AMPR, SE_HASH, SE_PIPE, SE_LPRN, SE_RPRN, SE_EXLM, SE_QUES, SE_CIRC,
-        KC_NO, SE_DOT, SE_MINS, SE_PLUS, SE_EQL, SE_SLSH, SE_DLR, SE_LCBR, SE_RCBR, SE_PERC, SE_TILD, SE_ASTR,
-        KC_LSFT, KC_NO, KC_NO, CSLOG, SE_BSLS, UPDIR, SE_UNDS, SE_LBRC, SE_RBRC, KC_NO, KC_NO, KC_NO,
+        KC_GRV, KC_AT, KC_LT, KC_GT, KC_AMPR, KC_HASH, KC_PIPE, KC_LPRN, KC_RPRN, KC_EXLM, KC_QUES, KC_CIRC,
+        KC_NO, KC_PDOT, KC_PMNS, KC_PPLS, KC_PEQL, KC_PSLS, KC_DLR, LALT(KC_LCBR), LALT(KC_RCBR), KC_PERC, KC_TILD, KC_ASTR,
+        KC_LSFT, KC_NO, KC_NO, CSLOG, KC_BSLS, UPDIR, KC_UNDS, LALT(KC_LBRC), LALT(KC_RBRC), KC_NO, KC_NO, KC_NO,
         KC_NO, KC_NO, KC_NO, KC_NO, KC_TRNS, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO
      ),
 
@@ -87,10 +86,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     [_NUMPAD] = LAYOUT_ortho_4x12(
-        KC_0, KC_1, KC_2, KC_3, KC_4, KC_5, KC_NO, SE_4, SE_5, SE_6, KC_NO, KC_BSPC,
-        KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, SE_0, SE_1, SE_2, SE_3, KC_NO, KC_PAST,
-        KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, SE_7, SE_8, SE_9, KC_NO, KC_NO,
-        KC_NO, KC_NO, KC_NO, KC_NO, KC_TRNS, KC_NO, KC_NO, KC_TRNS, KC_NO, KC_NO, KC_NO, KC_1
+        KC_0, KC_1, KC_2, KC_3, KC_4, KC_5, KC_NO, KC_4, KC_5, KC_6, KC_NO, KC_BSPC,
+        KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_0, KC_1, KC_2, KC_3, KC_NO, KC_PAST,
+        KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_7, KC_8, KC_9, KC_NO, KC_NO,
+        KC_NO, KC_NO, KC_NO, KC_NO, KC_TRNS, KC_NO, KC_NO, KC_TRNS, KC_NO, KC_NO, KC_NO, KC_NO
     ),
 
     [_GUITABS] = LAYOUT_ortho_4x12(
@@ -119,11 +118,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 }
 
 const custom_shift_key_t custom_shift_keys[] = {
-    {SE_QUOT, SE_DQUO},
+    // {SE_QUOT, SE_DQUO},
+    {KC_DOT, LALT(KC_COLN)},
+    {KC_QUOT, KC_DQUO},
+    {KC_COMM, LALT(KC_SCLN)}
 };
 
 uint8_t NUM_CUSTOM_SHIFT_KEYS =
     sizeof(custom_shift_keys) / sizeof(custom_shift_key_t);
+
 
 // Need to add Swedish å ä ö to capitalize them as well
 bool caps_word_press_user(uint16_t keycode) {
@@ -147,9 +150,9 @@ bool caps_word_press_user(uint16_t keycode) {
   }
 };
 
-const uint16_t PROGMEM se_1[] = { KC_V, SE_DOT, COMBO_END };
-const uint16_t PROGMEM se_2[] = { KC_V, SE_QUOT, COMBO_END };
-const uint16_t PROGMEM se_3[] = { KC_V, KC_BSPC, COMBO_END };
+const uint16_t PROGMEM se_1[] = { KC_V, KC_DOT, COMBO_END }; // ö
+const uint16_t PROGMEM se_2[] = { KC_V, LALT(KC_QUOT), COMBO_END }; // ä
+const uint16_t PROGMEM se_3[] = { KC_V, KC_BSPC, COMBO_END }; // å
 combo_t key_combos[COMBO_COUNT] = {
   COMBO(se_1, SE_ODIA),
   COMBO(se_2, SE_ADIA),
