@@ -1,9 +1,9 @@
 /*
  * TODO:
+ *  - make ctrl alt gui available on symbol layer
  *  - Find some macro/keybind, some way to press cmd + alt + c easily
  *  - Try using symbol layer with toggle instead, where space returns to QWERTY layer
- *  - Implement macros for: =>
- *  - Use swerty software & refactor code to use US keycodes with some swedish chars
+ *  - Implement macro to double tap for: () => {}
  *  - Setup macros to press LCTL(10) for more ways to access osx desktops
  */
 
@@ -53,23 +53,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         FNLAYER, KC_LCTL, KC_LALT, KC_LGUI, NUMPAD, KC_SPC, GUITABS, SYMBOLS, KC_RCTL, KC_RALT, KC_RGUI, KC_SLSH
     ),
 
-     /* Symbols
-      * ┌─────┬───┬───┬───┬─────┬─────┬───┬───┬───┬───┬───┬───┐
-      * │  `  │ @ │ < │ > │ &   │ #   │ | │ ( │ ) │ ! │ ? │ ^ │
-      * ├─────┼───┼───┼───┼─────┼─────┼───┼───┼───┼───┼───┼───┤
-      * │     │ . │ - │ + │ =   │ /   │ $ │ { │ } │ % │ ~ │ * │
-      * ├─────┼───┼───┼───┼─────┼─────┼───┼───┼───┼───┼───┼───┤
-      * │     │   │   │   │ \   │ ../ │ _ │ [ │ ] │   │   │   │
-      * ├─────┼───┼───┼───┼─────┼─────┼───┼───┼───┼───┼───┼───┤
-      * │     │   │   │   │ spc │ spc │   │   │   │   │   │   │
-      * └─────┴───┴───┴───┴─────┴─────┴───┴───┴───┴───┴───┴───┘
-      */
+   /*  SYMBOLS
+    * ┌───┬──────┬─────┬───────────────┬───┬─────┬───┬───┬───┬───┬───┬───┐
+    * │ ` │ @    │ <   │ >             │ & │ #   │ | │ ( │ ) │ ! │ ? │ ^ │
+    * ├───┼──────┼─────┼───────────────┼───┼─────┼───┼───┼───┼───┼───┼───┤
+    * │   │ .    │ -   │ +             │ = │ /   │ $ │ { │ } │ % │ ~ │ * │
+    * ├───┼──────┼─────┼───────────────┼───┼─────┼───┼───┼───┼───┼───┼───┤
+    * │   │      │     │ console.log() │ \ │ ../ │ _ │ [ │ ] │   │   │   │
+    * ├───┼──────┼─────┼───────────────┼───┼─────┼───┼───┼───┼───┼───┼───┤
+    * │   │ ctrl │ alt │ gui           │   │     │   │   │   │   │   │   │
+    * └───┴──────┴─────┴───────────────┴───┴─────┴───┴───┴───┴───┴───┴───┘     
+    */
 
      [_SYMBOLS] = LAYOUT_ortho_4x12(
         KC_GRV, KC_AT, KC_LT, KC_GT, KC_AMPR, KC_HASH, KC_PIPE, KC_LPRN, KC_RPRN, KC_EXLM, KC_QUES, KC_CIRC,
         KC_NO, KC_PDOT, KC_PMNS, KC_PPLS, KC_PEQL, KC_PSLS, KC_DLR, RALT(KC_LCBR), RALT(KC_RCBR), KC_PERC, KC_TILD, KC_ASTR,
         KC_LSFT, KC_NO, KC_NO, CSLOG, KC_BSLS, UPDIR, KC_UNDS, RALT(KC_LBRC), RALT(KC_RBRC), KC_NO, KC_NO, KC_NO,
-        KC_NO, KC_NO, KC_NO, KC_NO, KC_TRNS, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO
+        KC_NO, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO
      ),
 
     [_FNLAYER] = LAYOUT_ortho_4x12(
