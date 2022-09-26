@@ -52,5 +52,8 @@
 
 #define TAPPING_TERM 250 // 300 works quite well, could try values between 200 < x < 300
 
+// Prevent normal rollover on alphas from accidentally triggering mods.
+#define IGNORE_MOD_TAP_INTERRUPT
+
 // Activate caps word with double tap shift
 #define DOUBLE_TAP_SHIFT_TURNS_ON_CAPS_WORD

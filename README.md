@@ -7,7 +7,7 @@ ToDo:
 - [x] Some way to use swedish Ö Ä Å
   - [x] Refactor keymap to use Swedish Language specific keymaps:
 - [] implement [home row mods]()
-- [] home & end working on osx
+- [x] home & end working on osx
 - [x] implement [caps word](https://github.com/qmk/qmk_firmware/blob/master/users/drashna/keyrecords/capwords.md)
 
 

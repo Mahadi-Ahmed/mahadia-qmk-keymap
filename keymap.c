@@ -1,10 +1,9 @@
 /*
  * TODO:
- *  - make ctrl alt gui available on symbol layer
+ *  - Add HOME & END to MVNT + g | . 
  *  - Find some macro/keybind, some way to press cmd + alt + c easily
- *  - Try using symbol layer with toggle instead, where space returns to QWERTY layer
  *  - Implement macro to double tap for: () => {}
- *  - Setup macros to press LCTL(10) for more ways to access osx desktops
+ *  - Try numpad with normal layout instead of current implementation
  */
 
 #include "keycode.h"
@@ -27,6 +26,18 @@ enum planck_keycodes { QWERTY = SAFE_RANGE };
 #define FNLAYER MO(_FNLAYER)
 #define GUITABS LT(_GUITABS, KC_SPC)
 
+// Left-hand home row mods
+#define HOME_CTL_A LCTL_T(KC_A)
+#define HOME_ALT_S LALT_T(KC_S)
+#define HOME_GUI_D LGUI_T(KC_D)
+#define HOME_SFT_F LSFT_T(KC_F)
+
+// Right-hand home row mods
+#define HOME_RSF_J RSFT_T(KC_J)
+#define HOME_GUI_K LGUI_T(KC_K)
+#define HOME_ALT_L LALT_T(KC_L)
+#define HOME_CTL_DOT RCTL_T(KC_DOT)
+
 enum custom_keycodes {
   UPDIR = SAFE_RANGE,
   CSLOG
@@ -48,7 +59,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_QWERTY] = LAYOUT_ortho_4x12(
         KC_TAB, KC_Q, KC_W, KC_E, KC_R, KC_T, KC_Y, KC_U, KC_I, KC_O, KC_P, KC_BSPC,
-        MOVEMENT, KC_A, KC_S, KC_D, KC_F, KC_G, KC_H, KC_J, KC_K, KC_L, KC_DOT, RALT(KC_QUOT),
+        MOVEMENT, HOME_CTL_A, HOME_ALT_S, HOME_GUI_D, HOME_SFT_F, KC_G, KC_H, HOME_RSF_J, HOME_GUI_K, HOME_ALT_L, HOME_CTL_DOT, RALT(KC_QUOT),
         KC_LSFT, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_N, KC_M, KC_COMM, KC_SLASH, KC_X, KC_SFTENT,
         FNLAYER, KC_LCTL, KC_LALT, KC_LGUI, NUMPAD, KC_SPC, GUITABS, SYMBOLS, KC_RCTL, KC_RALT, KC_RGUI, KC_SLSH
     ),
@@ -119,8 +130,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 }
 
 const custom_shift_key_t custom_shift_keys[] = {
-    // {SE_QUOT, SE_DQUO},
-    {KC_DOT, RALT(KC_COLN)},
+    // {SE_QUOT, SE_DQUO}, HOME_CTL_DOT
+    // {KC_DOT, RALT(KC_COLN)},
+    {HOME_CTL_DOT, RALT(KC_COLN)},
     {KC_QUOT, KC_DQUO},
     {KC_COMM, RALT(KC_SCLN)}
 };
@@ -151,6 +163,7 @@ bool caps_word_press_user(uint16_t keycode) {
   }
 };
 
+// Need to specify the number of combo's in config.h
 const uint16_t PROGMEM se_1[] = { KC_V, KC_DOT, COMBO_END }; // ö
 const uint16_t PROGMEM se_2[] = { KC_V, RALT(KC_QUOT), COMBO_END }; // ä
 const uint16_t PROGMEM se_3[] = { KC_V, KC_BSPC, COMBO_END }; // å
