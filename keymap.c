@@ -164,7 +164,7 @@ bool caps_word_press_user(uint16_t keycode) {
 };
 
 // Need to specify the number of combo's in config.h
-const uint16_t PROGMEM se_1[] = { KC_V, KC_DOT, COMBO_END }; // ö
+const uint16_t PROGMEM se_1[] = { KC_V, HOME_CTL_DOT, COMBO_END }; // ö
 const uint16_t PROGMEM se_2[] = { KC_V, RALT(KC_QUOT), COMBO_END }; // ä
 const uint16_t PROGMEM se_3[] = { KC_V, KC_BSPC, COMBO_END }; // å
 combo_t key_combos[COMBO_COUNT] = {
