@@ -7,8 +7,8 @@ ToDo:
 - [x] Some way to use swedish Ö Ä Å
   - [x] Refactor keymap to use Swedish Language specific keymaps:
 - [x] implement [home row mods](https://precondition.github.io/home-row-mods)
-- [] home & end working on osx
 - [x] implement [caps word](https://github.com/qmk/qmk_firmware/blob/master/users/drashna/keyrecords/capwords.md)
+- [x] home & end working on osx
 
 
 ## QMK commands
@@ -34,3 +34,4 @@ include the same swedish version of keymap you're using in keymap.c
 - [Pascal Getreuer - QMK: Custom shift keys](https://getreuer.info/posts/keyboards/custom-shift-keys/index.html)
 - [QMK Swedish keymap](https://github.com/qmk/qmk_firmware/blob/master/quantum/keymap_extras/keymap_swedish.h)
 - [Swerty software keyboard layout](https://johanegustafsson.net/projects/swerty/)
+- [Home row mods](https://precondition.github.io/home-row-mods)
