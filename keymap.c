@@ -1,9 +1,10 @@
 /*
  * TODO:
- *  - Add HOME & END to MVNT + g | . 
- *  - Find some macro/keybind, some way to press cmd + alt + c easily
  *  - Implement macro to double tap for: () => {}
+ *  - Implement macro to double tap for :
+ *    - eee: qa!
  *  - Try numpad with normal layout instead of current implementation
+ *  - Add ASCII layout for all layers in codebase
  */
 
 #include "keycode.h"
@@ -92,7 +93,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_MOVEMENT] = LAYOUT_ortho_4x12(
         KC_TRNS, KC_BTN2, KC_MS_U, KC_BTN1, KC_NO, KC_NO, KC_NO, KC_WH_D, KC_WH_U, KC_NO, KC_NO, KC_NO,
-        KC_NO, KC_MS_L, KC_MS_D, KC_MS_R, KC_NO, KC_NO, KC_LEFT, KC_DOWN, KC_UP, KC_RGHT, KC_NO, KC_NO,
+        KC_NO, KC_MS_L, KC_MS_D, KC_MS_R, KC_NO, LGUI(KC_LEFT), KC_LEFT, KC_DOWN, KC_UP, KC_RGHT, LGUI(KC_RGHT), KC_NO,
         KC_TRNS, KC_UNDO, KC_CUT, KC_COPY, KC_PSTE, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_TRNS,
         KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_ACL0, KC_ACL1, KC_ACL2
     ),
