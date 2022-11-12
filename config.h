@@ -51,7 +51,7 @@
 #define COMBO_COUNT 3
 
 // previous value for TAPPING_TERM was 250
-#define TAPPING_TERM 200 // 300 works quite well, could try values between 200 < x < 300
+#define TAPPING_TERM 220 // 300 works quite well, could try values between 200 < x < 300
 
 // Prevent normal rollover on alphas from accidentally triggering mods.
 #define IGNORE_MOD_TAP_INTERRUPT

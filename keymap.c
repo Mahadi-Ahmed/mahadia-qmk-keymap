@@ -42,7 +42,8 @@ enum planck_keycodes { QWERTY = SAFE_RANGE };
 
 enum custom_keycodes {
   UPDIR = SAFE_RANGE,
-  CSLOG
+  CSLOG,
+  AFUNC
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -70,7 +71,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     * ┌───┬──────┬─────┬───────────────┬───┬─────┬───┬───┬───┬───┬───┬───┐
     * │ ` │ @    │ <   │ >             │ & │ #   │ | │ ( │ ) │ ! │ ? │ ^ │
     * ├───┼──────┼─────┼───────────────┼───┼─────┼───┼───┼───┼───┼───┼───┤
-    * │   │ .    │ -   │ +             │ = │ /   │ $ │ { │ } │ % │ ~ │ * │
+    * │   │AFUCN │ -   │ +             │ = │ /   │ $ │ { │ } │ % │ ~ │ * │
     * ├───┼──────┼─────┼───────────────┼───┼─────┼───┼───┼───┼───┼───┼───┤
     * │   │      │     │ console.log() │ \ │ ../ │ _ │ [ │ ] │   │   │   │
     * ├───┼──────┼─────┼───────────────┼───┼─────┼───┼───┼───┼───┼───┼───┤
@@ -80,7 +81,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
      [_SYMBOLS] = LAYOUT_ortho_4x12(
         KC_GRV, KC_AT, KC_LT, KC_GT, KC_AMPR, KC_HASH, KC_PIPE, KC_LPRN, KC_RPRN, KC_EXLM, KC_QUES, KC_CIRC,
-        KC_NO, KC_PDOT, KC_PMNS, KC_PPLS, KC_PEQL, KC_PSLS, KC_DLR, RALT(KC_LCBR), RALT(KC_RCBR), KC_PERC, KC_TILD, KC_ASTR,
+        KC_NO, AFUNC, KC_PMNS, KC_PPLS, KC_PEQL, KC_PSLS, KC_DLR, RALT(KC_LCBR), RALT(KC_RCBR), KC_PERC, KC_TILD, KC_ASTR,
         KC_LSFT, KC_NO, KC_NO, CSLOG, KC_BSLS, UPDIR, KC_UNDS, RALT(KC_LBRC), RALT(KC_RBRC), KC_NO, KC_NO, KC_NO,
         KC_NO, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO
      ),
@@ -125,6 +126,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case CSLOG:
             if (record->event.pressed) {
                 SEND_STRING("console.log()"SS_TAP(X_LEFT));
+            } 
+            return false;
+        case AFUNC:
+            if (record->event.pressed) {
+                // RALT(KC_LCBR), RALT(KC_RCBR)
+                SEND_STRING("() => " SS_RALT("{" SS_RALT("}")) SS_TAP(X_LEFT));
             } 
             return false;
     }
