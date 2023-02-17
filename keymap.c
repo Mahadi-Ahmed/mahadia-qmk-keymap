@@ -1,7 +1,6 @@
 /*
  * TODO:
  *  - Lower right side, after sybmols are useless, look for something else
- *  - Implement macro to double tap for: () => {}
  *  - Implement macro to double tap for :
  *    - eee: qa!
  *  - Try numpad with normal layout instead of current implementation
@@ -54,7 +53,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * ├───────────┼───────┼──────┼─────┼─────┼─────┼─────┼─────────┼───────┼──────┼─────┼────────────┤
      * │ mvmnt/esc │ a     │ s    │ d   │ f   │ g   │ h   │ j       │ k     │ l    │ . : │ '          │
      * ├───────────┼───────┼──────┼─────┼─────┼─────┼─────┼─────────┼───────┼──────┼─────┼────────────┤
-     * │ lshift    │ z     │ dead │ c   │ v   │ b   │ n   │ m       │ ,     │ .    │  x  │ rs / enter │
+     * │ lshift    │ z     │ x    │ c   │ v   │ b   │ n   │ m       │ ,     │ ? /  │ - _ │ rs / enter │
      * ├───────────┼───────┼──────┼─────┼─────┼─────┼─────┼─────────┼───────┼──────┼─────┼────────────┤
      * │ fnl       │ lctrl │ lalt │ gui │ num │ spc │ gui │ symbols │ rctrl │ ralt │ gui │ ? /        │
      * └───────────┴───────┴──────┴─────┴─────┴─────┴─────┴─────────┴───────┴──────┴─────┴────────────┘
