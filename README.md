@@ -10,6 +10,20 @@ ToDo:
 - [x] implement [caps word](https://github.com/qmk/qmk_firmware/blob/master/users/drashna/keyrecords/capwords.md)
 - [x] home & end working on osx
 
+# layout
+
+##### QWERTY
+
+| tab          	| q     	| w          	| e         	| r   	| t   	| y             	| u       	| i    	| o          	| p   	| bspc       	|
+|--------------	|-------	|------------	|-----------	|-----	|-----	|---------------	|---------	|------	|------------	|-----	|------------	|
+| mvmnt / esc  	| a     	| s          	| d         	| f   	| g   	| h             	| j       	| k    	| l          	| . : 	| ' "        	|
+| lshift       	| z     	| x          	| c         	| v   	| b   	| n             	| m       	| , ;  	| / ?        	| - _ 	| rs / enter 	|
+| fnl          	| lctrl 	| lalt (opt) 	| gui (cmd) 	| num 	| spc 	| guitabs / spc 	| symbols 	| rctl 	| ralt (opt) 	| gui 	| / ?        	|
+
+
+##### QWERTY
+
+
 
 ## QMK commands
 convert c keymap to a json format
