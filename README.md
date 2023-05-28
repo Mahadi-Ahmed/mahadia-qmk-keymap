@@ -11,6 +11,7 @@ ToDo:
 - [x] home & end working on osx
 
 # layout
+Map of layout & layers for my keymap with planck 48
 
 ##### QWERTY
 
@@ -20,10 +21,39 @@ ToDo:
 | lshift       	| z     	| x          	| c         	| v   	| b   	| n             	| m       	| , ;  	| / ?        	| - _ 	| rs / enter 	|
 | fnl          	| lctrl 	| lalt (opt) 	| gui (cmd) 	| num 	| spc 	| guitabs / spc 	| symbols 	| rctl 	| ralt (opt) 	| gui 	| / ?        	|
 
+##### Symbols
 
-##### QWERTY
+| ` 	| @          	| <           	| >         	| &   	| # 	| \| 	| ( 	| ) 	| ! 	| ? 	| ^ 	|
+|---	|------------	|-------------	|-----------	|-----	|---	|----	|---	|---	|---	|---	|---	|
+|   	| arrow func 	| -           	| +         	| =   	| / 	| $  	| { 	| } 	| % 	| ~ 	| * 	|
+|   	|            	| console log 	| \         	| ../ 	| _ 	| [  	| ] 	|   	|   	|   	|   	|
+|   	| ctrl       	| alt (opt)   	| gui (cmd) 	|     	|   	|    	|   	|   	|   	|   	|   	|
 
+##### FN Layer
 
+| f1 	| f2 	| f3              	| f4                     	| f5 	| f6 	| f7   	| f8   	| f9        	| f10          	| f11   	| f12       	|
+|----	|----	|-----------------	|------------------------	|----	|----	|------	|------	|-----------	|--------------	|-------	|-----------	|
+|    	|    	| osm lctl & lalt 	| osm lctl & lalt & lcmd 	|    	|    	| left 	| down 	| up        	| right        	|       	|           	|
+|    	|    	|                 	|                        	|    	|    	|      	|      	|           	| pause / play 	|       	| enter     	|
+|    	|    	|                 	| cmd                    	|    	|    	|      	|      	| prev song 	| vol +        	| vol - 	| next song 	|
+
+##### Movement
+
+| tab 	| Mouse btn2 	| Mouse up   	| Mouse btn1  	|   	|            	|      	| Scroll Down 	| Scroll up 	|              	|              	|              	|
+|-----	|------------	|------------	|-------------	|---	|------------	|------	|-------------	|-----------	|--------------	|--------------	|--------------	|
+|     	| Mouse left 	| Mouse down 	| Mouse right 	|   	| cmd + left 	| left 	| down        	| up        	| right        	| cmd + right  	|              	|
+|     	|            	|            	|             	|   	|            	|      	|             	|           	|              	|              	| enter        	|
+|     	|            	|            	|             	|   	|            	|      	|             	|           	| accelerate 0 	| accelerate 1 	| accelerate 2 	|
+
+##### NUMPAD
+
+| 0 	| 1 	| 2 	| 3 	| 4 	| 5 	|   	| 4 	| 5 	| 6 	|   	| bspc 	|
+|---	|---	|---	|---	|---	|---	|---	|---	|---	|---	|---	|------	|
+|   	|   	|   	|   	|   	|   	| 0 	| 1 	| 2 	| 3 	|   	| *    	|
+|   	|   	|   	|   	|   	|   	|   	| 7 	| 8 	| 9 	|   	|      	|
+|   	|   	|   	|   	|   	|   	|   	|   	|   	|   	|   	|      	|
+
+##### GUITABS
 
 ## QMK commands
 convert c keymap to a json format
