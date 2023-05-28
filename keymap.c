@@ -48,17 +48,16 @@ enum custom_keycodes {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     /* QWERTY
-     * ┌───────────┬───────┬──────┬─────┬─────┬─────┬─────┬─────────┬───────┬──────┬─────┬────────────┐
-     * │ tab       │ q     │ w    │ e   │ r   │ t   │ y   │ u       │ i     │ o    │ p   │ bspc       │
-     * ├───────────┼───────┼──────┼─────┼─────┼─────┼─────┼─────────┼───────┼──────┼─────┼────────────┤
-     * │ mvmnt/esc │ a     │ s    │ d   │ f   │ g   │ h   │ j       │ k     │ l    │ . : │ '          │
-     * ├───────────┼───────┼──────┼─────┼─────┼─────┼─────┼─────────┼───────┼──────┼─────┼────────────┤
-     * │ lshift    │ z     │ x    │ c   │ v   │ b   │ n   │ m       │ ,     │ ? /  │ - _ │ rs / enter │
-     * ├───────────┼───────┼──────┼─────┼─────┼─────┼─────┼─────────┼───────┼──────┼─────┼────────────┤
-     * │ fnl       │ lctrl │ lalt │ gui │ num │ spc │ gui │ symbols │ rctrl │ ralt │ gui │ ? /        │
-     * └───────────┴───────┴──────┴─────┴─────┴─────┴─────┴─────────┴───────┴──────┴─────┴────────────┘
+      ┌───────────┬───────┬────────────┬───────────┬─────┬─────┬───────────────┬─────────┬──────┬────────────┬─────┬────────────┐
+      │ tab       │ q     │ w          │ e         │ r   │ t   │ y             │ u       │ i    │ o          │ p   │ bspc       │
+      ├───────────┼───────┼────────────┼───────────┼─────┼─────┼───────────────┼─────────┼──────┼────────────┼─────┼────────────┤
+      │ mvmnt/esc │ a     │ s          │ d         │ f   │ g   │ h             │ j       │ k    │ l          │ . : │ ' "        │
+      ├───────────┼───────┼────────────┼───────────┼─────┼─────┼───────────────┼─────────┼──────┼────────────┼─────┼────────────┤
+      │ lshift    │ z     │ x          │ c         │ v   │ b   │ n             │ m       │ , ;  │ / ?        │ - _ │ rs / enter │
+      ├───────────┼───────┼────────────┼───────────┼─────┼─────┼───────────────┼─────────┼──────┼────────────┼─────┼────────────┤
+      │ fnl       │ lctrl │ lalt (opt) │ gui (cmd) │ num │ spc │ guitabs / spc │ symbols │ rctl │ ralt (opt) │ gui │ / ?        │
+      └───────────┴───────┴────────────┴───────────┴─────┴─────┴───────────────┴─────────┴──────┴────────────┴─────┴────────────┘
      */
-
     [_QWERTY] = LAYOUT_ortho_4x12(
         KC_TAB, KC_Q, KC_W, KC_E, KC_R, KC_T, KC_Y, KC_U, KC_I, KC_O, KC_P, KC_BSPC,
         MOVEMENT, HOME_CTL_A, HOME_ALT_S, HOME_GUI_D, HOME_SFT_F, KC_G, KC_H, HOME_RSF_J, HOME_GUI_K, HOME_ALT_L, HOME_CTL_DOT, RALT(KC_QUOT),
@@ -75,9 +74,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     * │   │      │     │ console.log() │ \ │ ../ │ _ │ [ │ ] │   │   │   │
     * ├───┼──────┼─────┼───────────────┼───┼─────┼───┼───┼───┼───┼───┼───┤
     * │   │ ctrl │ alt │ gui           │   │     │   │   │   │   │   │   │
-    * └───┴──────┴─────┴───────────────┴───┴─────┴───┴───┴───┴───┴───┴───┘     
+    * └───┴──────┴─────┴───────────────┴───┴─────┴───┴───┴───┴───┴───┴───┘
     */
-
      [_SYMBOLS] = LAYOUT_ortho_4x12(
         KC_GRV, KC_AT, KC_LT, KC_GT, KC_AMPR, KC_HASH, KC_PIPE, KC_LPRN, KC_RPRN, KC_EXLM, KC_QUES, KC_CIRC,
         KC_NO, AFUNC, KC_PMNS, KC_PPLS, KC_PEQL, KC_PSLS, KC_DLR, RALT(KC_LCBR), RALT(KC_RCBR), KC_PERC, KC_TILD, KC_ASTR,
@@ -85,6 +83,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_NO, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO
      ),
 
+    /* FNLAYER
+    ┌────┬────┬─────────────────┬────────────────────────┬────┬────┬──────┬──────┬───────────┬─────────────┬───────┬───────────┐
+    │ f1 │ f2 │ f3              │ f4                     │ f5 │ f6 │ f7   │ f8   │ f9        │ f10         │ f11   │ f12       │
+    ├────┼────┼─────────────────┼────────────────────────┼────┼────┼──────┼──────┼───────────┼─────────────┼───────┼───────────┤
+    │    │    │ OSM(lctl + lalt │ OSM(lclt + lalt - lcmd │    │    │ left │ down │ up        │ right       │       │           │
+    ├────┼────┼─────────────────┼────────────────────────┼────┼────┼──────┼──────┼───────────┼─────────────┼───────┼───────────┤
+    │    │    │                 │                        │    │    │      │      │           │ paus / play │       │ enter     │
+    ├────┼────┼─────────────────┼────────────────────────┼────┼────┼──────┼──────┼───────────┼─────────────┼───────┼───────────┤
+    │    │    │                 │                        │    │    │      │      │ prev song │ vol -       │ vol + │ next song │
+    └────┴────┴─────────────────┴────────────────────────┴────┴────┴──────┴──────┴───────────┴─────────────┴───────┴───────────┘
+    */
     [_FNLAYER] = LAYOUT_ortho_4x12(
         KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6, KC_F7, KC_F8, KC_F9, KC_F10, KC_F11, KC_F12,
         KC_NO, KC_NO, OSM(MOD_LCTL | MOD_LALT), OSM(MOD_LCTL | MOD_LALT | MOD_LGUI), KC_NO, KC_NO, KC_LEFT, KC_DOWN, KC_UP, KC_RGHT, KC_NO, KC_NO,
@@ -92,6 +101,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_NO, KC_NO, KC_NO, KC_TRNS, KC_NO, KC_NO, KC_NO, KC_NO, KC_MRWD, KC_VOLD, KC_VOLU, KC_MFFD
     ),
 
+    /* MOVEMENT
+    ┌─────┬────────────┬────────────┬─────────────┬─┬────────────┬──────┬─────────────┬───────────┬──────────────┬──────────────┬──────────────┐
+    │ tab │ Mouse btn2 │ Mouse up   │ Mouse btn1  │ │            │      │ Scroll Down │ Scroll up │              │              │              │
+    ├─────┼────────────┼────────────┼─────────────┼─┼────────────┼──────┼─────────────┼───────────┼──────────────┼──────────────┼──────────────┤
+    │     │ Mouse left │ Mouse Down │ Mouse right │ │ cmd + left │ left │ down        │ up        │ right        │ cmd+right    │              │
+    ├─────┼────────────┼────────────┼─────────────┼─┼────────────┼──────┼─────────────┼───────────┼──────────────┼──────────────┼──────────────┤
+    │     │            │            │             │ │            │      │             │           │              │              │ enter        │
+    ├─────┼────────────┼────────────┼─────────────┼─┼────────────┼──────┼─────────────┼───────────┼──────────────┼──────────────┼──────────────┤
+    │     │            │            │ cmd         │ │            │      │             │           │ accelerate 0 │ accelerate 1 │ accelerate 2 │
+    └─────┴────────────┴────────────┴─────────────┴─┴────────────┴──────┴─────────────┴───────────┴──────────────┴──────────────┴──────────────┘
+    */
     [_MOVEMENT] = LAYOUT_ortho_4x12(
         KC_TRNS, KC_BTN2, KC_MS_U, KC_BTN1, KC_NO, KC_NO, KC_NO, KC_WH_D, KC_WH_U, KC_NO, KC_NO, KC_NO,
         KC_NO, KC_MS_L, KC_MS_D, KC_MS_R, KC_NO, LGUI(KC_LEFT), KC_LEFT, KC_DOWN, KC_UP, KC_RGHT, LGUI(KC_RGHT), KC_NO,
@@ -99,6 +119,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_ACL0, KC_ACL1, KC_ACL2
     ),
 
+    /* NUMPAD
+    ┌───┬───┬───┬───┬─────┬───┬─┬───┬───┬───┬─┬──────┐
+    │ 0 │ 1 │ 2 │ 3 │ 4   │ 5 │ │ 4 │ 5 │ 6 │ │ bspc │
+    ├───┼───┼───┼───┼─────┼───┼─┼───┼───┼───┼─┼──────┤
+    │   │   │   │   │     │   │ │ 1 │ 2 │ 3 │ │ *    │
+    ├───┼───┼───┼───┼─────┼───┼─┼───┼───┼───┼─┼──────┤
+    │   │   │   │   │     │   │ │ 7 │ 8 │ 9 │ │      │
+    ├───┼───┼───┼───┼─────┼───┼─┼───┼───┼───┼─┼──────┤
+    │   │   │   │   │ num │   │ │   │   │   │ │      │
+    └───┴───┴───┴───┴─────┴───┴─┴───┴───┴───┴─┴──────┘
+    */
     [_NUMPAD] = LAYOUT_ortho_4x12(
         KC_0, KC_1, KC_2, KC_3, KC_4, KC_5, KC_NO, KC_4, KC_5, KC_6, KC_NO, KC_BSPC,
         KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_0, KC_1, KC_2, KC_3, KC_NO, KC_PAST,
@@ -125,13 +156,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case CSLOG:
             if (record->event.pressed) {
                 SEND_STRING("console.log()"SS_TAP(X_LEFT));
-            } 
+            }
             return false;
         case AFUNC:
             if (record->event.pressed) {
                 // RALT(KC_LCBR), RALT(KC_RCBR)
                 SEND_STRING("() => " SS_RALT("{" SS_RALT("}")) SS_TAP(X_LEFT));
-            } 
+            }
             return false;
     }
     return true;
